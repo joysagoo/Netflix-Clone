@@ -1,0 +1,381 @@
+:root {
+    --primary-color:red;
+    --dark-color: #1A1919;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: black;
+    color:white;
+}
+
+h1, h2, h3, h4 {
+    color:white;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+img{
+    width:100%;
+}
+p {
+    margin: 10px 0 ;
+}
+
+.showcase{
+    width:100%;
+    height:100vh;
+    position:relative;
+    background: url("https://i.ibb.co/vXqDmnh/background.jpg") no-repeat center center/cover;
+}
+
+.showcase-top{
+    position:relative;
+    height:90px;
+}
+
+.showcase-top img{
+    width:180px;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%); /* this is added because the image starts from the
+    center and the center of the image is not in the center */
+    z-index: 2;
+}
+
+.showcase::after{
+    content: '';
+    position: absolute;
+    top:0;
+    left: 0;
+
+    /*making these top and left to 0 are necessary*/
+
+    height: 100%;
+    width: 100%;
+
+    background: rgba(0,0,0, 0.5);
+    box-shadow: inset 100px 100px 250px black, inset -100px -100px 250px black;
+}
+
+.showcase-top a{
+    position: absolute;
+    top:15%;
+    right:10px;
+    z-index: 2;
+}
+
+.showcase-content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7rem;
+    z-index: 2;
+}
+
+.showcase-content h1{
+    font-size: 4rem;
+    line-height: 2rem;
+    margin: 0 0 2rem;
+}
+
+.showcase-content p{
+    text-transform: uppercase;
+    color: white;
+    font-size: 1.5rem;
+    line-height: 2;
+    margin: 0 0 1.2rem;
+}
+
+/*Tabs */
+
+.tabs{
+    background: var(--dark-color);
+    padding-top: 1rem;
+    border-bottom: #3d3d3d 3px solid;
+    color: gray;
+    border-right: none;
+}
+
+.tabs .container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.tabs p{
+    font-size: 1.2rem;
+    padding-top: 0.5rem;
+}
+.tabs .container >div{ /* this code is for targeting each div under the container class */
+    padding: 1.5rem 0;
+}
+
+.tabs .container >div:hover{
+    color: white;
+    cursor: pointer;
+}
+
+.tab-border{
+    border-bottom: var(--primary-color) 4px solid;
+}
+
+/* hide tab-contents initially*/
+
+#tab-1-content, #tab-2-content, #tab-3-content{
+    display: none;
+}
+
+/*show tab 1 contents initially only */
+
+.show{
+    display: block !important;
+    /* since show class is only in tab-1-content, hence it blocks every other
+       tab-content-item and only displays tab-1-content INITIALLY
+
+       show class only displays tab-contents which are selected currently
+     */
+}
+/*container*/
+
+.container{
+    width: 70%;
+    margin:auto;
+    overflow:hidden;
+    padding: 0 2rem;
+}
+
+/*Tab contents*/
+
+.tab-content{
+    padding: 5rem 0;
+    background: var(--dark-color);
+    color: white;
+}
+
+#tab-1-content .tab-1-content-inner{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#tab-2-content .tab-2-content-upper{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#tab-2-content .tab-2-content-lower{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+/*Text styles*/
+
+.text-lg{
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.text-dark{
+    color: gray;
+}
+
+.text-center{
+    text-align: center;
+}
+/* buttons now */
+
+.btn{
+    display:inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 0.4rem 1.5rem;
+    font-size: 1rem;
+    text-align: center;
+    border: none;
+    /*cursor: pointer;*/
+    border-radius: 2px;
+    outline: none;
+}
+
+.btn:hover{
+    opacity: 0.8;
+}
+
+.btn-rounded{
+    border-radius: 5px;
+}
+
+.btn-xl{
+    font-size: 1.5rem;
+    padding: 1rem 1.7rem;
+    text-transform: uppercase;
+}
+
+.btn-lg{
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.7rem 1.2rem;
+    text-transform: uppercase;
+}
+
+.btn-icon{
+    margin-left: 1rem;
+}
+
+/* table */
+
+.table{
+    width: 100%;
+    margin-top: 2rem;
+    border-spacing: 0; /* so that there is no spacing between the borders of the table */
+}
+
+.table thead th{
+    text-transform: uppercase;
+    padding: 0.7rem;
+}
+
+.table tbody tr td{
+    color: #999;
+    padding: 1rem;
+    text-align: center;
+}
+
+/* now if we want to align the first child of the tbody tr td to the left, we will use
+   a pseudo class that will affect only the first child of this class and not any other child
+ */
+
+.table tbody tr td:first-child{
+    text-align: left;
+}
+
+.table tbody tr:nth-child(odd){
+    background: #222;
+}
+
+/* footer */
+
+.footer{
+    max-width: 75%;
+    margin: 1rem auto;
+    overflow: hidden;
+    color: #999;
+}
+
+.footer p{
+    padding-left: 2.3rem;
+}
+.footer a{
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.footer .footer-columns{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+}
+
+.footer li{
+    line-height: 1.9;
+    list-style: none;
+}
+
+.footer li:hover{
+    color: white;
+    cursor: pointer;
+}
+
+/* for responsiveness */
+
+/* this one is for 960px or less */
+
+@media(max-width: 960px){
+    .showcase{
+        height: 70vh;
+    }
+
+    .hide-sm{
+        display: none;
+    }
+
+    .showcase-top img{
+        top: 20%;
+        left:3%;
+        transform: translate(0);
+    }
+
+    .showcase-content h1{
+        font-size: 2.2rem;
+        line-height: 1;
+    }
+
+    .showcase-content p{
+        font-size: 18px;
+        padding-bottom: 3px;
+    }
+
+    .btn-xl{
+        font-size: 1rem;
+        padding: 1.2rem 2rem;
+    }
+
+    .btn-lg{
+        font-size: 15px;
+        padding: 0.7rem 1rem;
+    }
+
+    .text-lg{
+        font-size: 1rem;
+    }
+
+    .footer .footer-columns{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .tab-3-content .tab-3-upper .text-lg{
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media(max-width: 700px) {
+
+    #tab-1-content .tab-1-content-inner{
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .tab-2-content #tab-2-content-upper{
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .tab-2-content #tab-2-content-lower{
+        grid-template-columns: 1fr;
+    }
+
+    .showcase::after{
+        box-shadow: inset 50px 50px 125px black, inset -50px -50px 125px black;
+    }
+}
